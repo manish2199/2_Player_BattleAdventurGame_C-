@@ -9,6 +9,6 @@
   
   3.Modular Code.
   
-# GamePlay Game 
+# GamePlay 
   Playable Link - https://replit.com/@ManishMistry1/2-Player-Battler-Adventure-Game
   
