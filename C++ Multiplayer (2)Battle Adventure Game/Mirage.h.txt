@@ -1,0 +1,16 @@
+#pragma once
+#include "BasePlayer.h"
+
+class MiragePL : public BasePlayer
+{  
+  public :
+    
+     // For setting values.
+     MiragePL(int h , int b_d , int ad_d , int h_h,PlayerType pt);
+
+     MiragePL();
+      
+     // PlayerType is attacker and BasePlayer is for whoom you attacked
+     void UltimateAbility(int ad_damage , PlayerType p,BasePlayer*player);
+
+};

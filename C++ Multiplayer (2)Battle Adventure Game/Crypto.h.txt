@@ -1,0 +1,15 @@
+#pragma once 
+#include "BasePlayer.h"
+
+class CryptoPL : public BasePlayer
+{ 
+
+  public :
+     
+     CryptoPL();
+    
+     CryptoPL(int h,int b_d,int ad_d,int h_h,PlayerType pt);
+     
+     void UltimateAbility(int ad_damage , PlayerType p,BasePlayer*player);
+
+};

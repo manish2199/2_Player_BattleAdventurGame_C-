@@ -1,0 +1,55 @@
+#pragma once 
+#include "Player.h"
+#include "BasePlayer.h"
+#include "Horizon.h"
+#include "Crypto.h"
+#include "Mirage.h"
+
+
+class MainFunction 
+{
+
+public :
+
+        // Show Horizon Stats
+        static void ShowHorizonStats();
+
+
+        // Show Crypto Stats
+        static void ShowCryptoStats();
+
+
+        // Show Mirage Stats
+        static void ShowMirageStats();
+
+        // For Instruction and Rules 
+        static void Show_Instructions_Rules();
+
+
+        // For Player Information
+        static void ShowPlayerInfo();
+
+        // // Menu Option To Select 
+        static void MenuOption();
+
+
+        // For Game Banner
+        static void ShowBanner();
+
+        // Show Winning Text 
+        static void ShowWinner( BasePlayer*a);
+
+
+        // First Player1 can choose and then Player 2
+        // Player 1 is Selecting Option
+        static void SwitchFunction (BasePlayer*player1 ,BasePlayer*player2);
+
+
+        /// Common Function for all battles 
+        static void Battle(BasePlayer*p1ptr,BasePlayer*p2ptr);
+
+
+        //  Main Engine for game 
+        static void GameEngine();
+
+};

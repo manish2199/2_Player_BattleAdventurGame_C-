@@ -1,0 +1,217 @@
+#include <iostream>
+#include "Player.h"
+#include "BasePlayer.h"
+#include<stdio.h>
+#include<stdlib.h>
+using namespace std;
+
+
+
+ // returns palyer Type
+ PlayerType  BasePlayer::getPlayerType()
+{
+     return playerTP;
+}
+
+
+
+BasePlayer :: BasePlayer()
+{}
+      
+
+
+
+//   To Get String of playerType
+string  BasePlayer::getPlayerTypeString( PlayerType plt)
+  {
+    switch(plt)
+    {
+      case Horizon :
+       {
+          return "Horizon";
+          break;
+       }
+      case Crypto :
+      {
+        return "Crypto";
+        break;
+      }
+      case Mirage :
+      {
+        return "Mirage";
+        break;
+      }
+    }
+        
+  }
+
+
+
+
+// Set fixed player variables
+  BasePlayer :: BasePlayer(int hl , int base_d , int aditional_d , int he_hl,PlayerType plT)
+{ 
+      health = hl ;
+      base_damage = base_d;
+      adition_damage = aditional_d;
+      heal_health = he_hl;
+      playerTP = plT;
+}
+
+
+
+
+// Generate random no in range that you would give
+int BasePlayer::randnoGenerator(int n)
+{
+  srand(time(NULL));
+
+   return 1+(rand() % n);
+}
+
+// get health
+int BasePlayer:: getHealth()
+{
+  return health;
+}
+
+// get base damage
+int BasePlayer:: getbaseDamgae()
+{
+   return base_damage;
+}
+
+// get adition damage
+int BasePlayer:: getaditionaldamage()
+{
+      return adition_damage;   
+}
+
+// get healing health
+int BasePlayer:: getheallinghealth()
+{
+   return heal_health;
+}
+
+// get damage form other player
+void BasePlayer::TakeDamage(int aditnl_dm, PlayerType attacker_player)
+{
+    if (CheckAlive())
+    {
+       int randomDamage;
+       int totalDamage;
+            
+       // It check who is attacker
+       if(attacker_player  == Horizon || attacker_player == Crypto || attacker_player == Mirage)
+      {
+        // If Ultimate ability is unclocked for crypto of current class
+        if (crypto_ultimate)
+        {
+          
+          randomDamage = randnoGenerator(aditnl_dm);
+          totalDamage = base_damage + randomDamage + 35;
+          health = health - totalDamage;
+          crypto_ultimate = false;
+        }
+        // For normal damage for all players
+        else if (!crypto_ultimate) 
+        {
+           randomDamage = randnoGenerator(aditnl_dm);
+           totalDamage = base_damage + randomDamage;
+           health = health - totalDamage;
+        }
+      } 
+
+      // For Msgs indicating damage and health status of Current Player
+      if (totalDamage >= 50)
+      {
+        cout<<"                                OH!!!! Caution Critical Hit From Opponent "<<endl;
+      }
+      else 
+      {
+        cout<<"                                Damaged done by Opponent!!!!!"<<endl;
+      }
+       cout<<"                                 Aditional Damage Done is "<<randomDamage<<endl;
+       cout<<"                                 Total Damage done is "<<totalDamage<<endl;
+      
+       // Make sure we only print health if it is greater than 0       
+       if ( health > 0)
+        {
+          cout<<"                               Health of "<<getPlayerTypeString(getPlayerType())<<" is now : "<<getHealth()<<"\n";
+        }
+        else if ( health < 0 )
+        {
+          cout<<"                                  Health of "<<getPlayerTypeString(getPlayerType())<<" is 0\n";
+        }
+      }
+}
+
+// heal the current player
+void BasePlayer::HealThePlayer()
+{
+   if (health > 0 && health < 100)
+   {
+     int randno;
+      // Checking for player type
+      if ( getPlayerType() == Horizon || getPlayerType() == Crypto ||getPlayerType() == Mirage )
+      {
+        
+        // If Ultimate ability is unclocked of horizon
+        if ( horizon_ultimate )
+        {
+          randno = randnoGenerator(heal_health);
+          health = health + randno + 50;
+        }
+        // For normal healing for all players
+        else if ( !horizon_ultimate ) 
+        {
+           randno = randnoGenerator(heal_health);
+           health = health + randno;
+          
+
+        }
+      } 
+     cout<<"                            The player"<<getPlayerTypeString(getPlayerType())<<" is healed by " <<randno<<endl;
+     
+     cout<<"                            Health of "<<getPlayerTypeString(getPlayerType())<<" is "<<health<<"\n";
+     
+    }
+   else if(health >= 100)
+   {
+     cout<<getPlayerTypeString(getPlayerType())<<"'s health is already full."<<endl;
+     health = 100;
+   }
+  
+}
+ 
+
+
+
+ 
+// check the player is alive or not and set the bool variable
+bool BasePlayer::CheckAlive()
+{
+  if (health <= 0)
+  {
+   return false;
+  }
+  else
+  {
+  return true;
+  }
+}
+
+
+
+// ultimate ability
+    void BasePlayer::UltimateAbility(int ad_damage , PlayerType p,BasePlayer*player)
+    {}
+
+
+
+
+ 
+     
+     
+     
+     

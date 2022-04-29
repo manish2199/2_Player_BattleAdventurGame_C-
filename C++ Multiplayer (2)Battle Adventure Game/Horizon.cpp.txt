@@ -1,0 +1,38 @@
+#include <iostream>
+#include "Player.h"
+#include "Horizon.h"
+using namespace std;
+ 
+HorizonPL::HorizonPL(int h , int b_d , int ad_d , int h_h,PlayerType pt) : BasePlayer(h,b_d,ad_d,h_h,pt)
+{}
+
+
+HorizonPL :: HorizonPL()
+{}
+
+
+// Ultimate Ability for Horizon
+ void HorizonPL::UltimateAbility(int ad_damage , PlayerType p,BasePlayer*player)
+ {
+   int randno = randnoGenerator(8);
+   
+   if ( randno <=3 )
+   {
+     horizon_ultimate = true;
+
+     //Healing the current player
+     HealThePlayer();
+     cout<<"!!Huge Heal!!"<<endl;
+     
+   }
+   else if ( randno > 2)
+   {
+     cout<<"Ops!!!!!Your Ultimate Ability is not Unclocked Yet!!!Better Luck Next Time:( "<<endl;
+   }
+
+   horizon_ultimate = false;
+
+ }
+
+
+

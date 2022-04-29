@@ -1,0 +1,18 @@
+#pragma once
+#include "BasePlayer.h"
+
+class HorizonPL : public BasePlayer
+{
+
+  
+  public :
+      
+    HorizonPL();
+
+    HorizonPL(int h , int b_d , int ad_d , int h_h,PlayerType pt);
+     
+    void UltimateAbility(int ad_damage , PlayerType p,BasePlayer*player);
+  
+    
+
+};

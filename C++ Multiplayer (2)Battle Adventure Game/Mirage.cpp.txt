@@ -1,0 +1,32 @@
+#include <iostream>
+#include "Player.h"
+#include "Mirage.h"
+using namespace std;
+ 
+MiragePL::MiragePL(int h , int b_d , int ad_d , int h_h,PlayerType pt) :BasePlayer(h,b_d,ad_d,h_h,pt)
+{}
+
+
+//  Ultimate Ability of Mirage 
+void MiragePL:: UltimateAbility(int ad_damage , PlayerType p,BasePlayer*player)
+ {
+   int randno = randnoGenerator(8);
+   
+   if ( randno <=3 )
+   {
+     int count = 2;
+     cout<<"Ultimate Ability of Mirage Activated"<<endl;
+      for ( int i = 0 ; i < 2 ; i++)
+       {
+         cout<<"\nPress the Enter key\n";
+         cin.ignore();
+             
+        // Calling attacked player take damage function
+         player->TakeDamage( ad_damage, p);  
+        }
+   }
+   else if ( randno > 2)
+   {
+     cout<<"Ops!!!!!Your Ultimate Ability is not Unclocked Yet!!!Better Luck Next Time:( "<<endl;
+   }
+}

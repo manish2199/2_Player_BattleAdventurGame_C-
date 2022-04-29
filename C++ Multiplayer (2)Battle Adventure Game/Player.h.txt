@@ -1,0 +1,9 @@
+#pragma once 
+
+//Enum for player type
+  enum PlayerType
+ {
+      Horizon = 1,
+      Crypto = 2,
+      Mirage = 3,
+  };

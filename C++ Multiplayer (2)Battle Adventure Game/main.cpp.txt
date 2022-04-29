@@ -1,0 +1,19 @@
+#include <iostream>
+#include "MainFunction.h"
+#include <stdlib.h>
+#include <memory>
+using namespace std;
+
+
+int main()
+{ 
+  // For Banner View
+   MainFunction :: ShowBanner();
+  
+  // For Menu Option
+   MainFunction :: MenuOption();
+
+  // GAME  SARTED
+    MainFunction :: GameEngine();
+   
+}

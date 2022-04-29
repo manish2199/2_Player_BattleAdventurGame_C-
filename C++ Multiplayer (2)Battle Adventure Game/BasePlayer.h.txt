@@ -1,0 +1,70 @@
+#pragma once
+#include "Player.h"
+using namespace std;
+
+
+class BasePlayer 
+{
+  protected :
+     
+      int health ;
+      int base_damage;
+      int adition_damage;
+      int heal_health;
+      int randno;
+      PlayerType playerTP;
+      bool horizon_ultimate = false;
+
+  
+
+  public : 
+
+      // For UltimateAbility of Crypto
+      bool crypto_ultimate = false;
+
+      BasePlayer();
+          
+
+      BasePlayer(int hl , int base_d , int aditional_d , int he_hl,PlayerType plT);
+       
+      
+      // Generate Random Range
+      int randnoGenerator(int n);
+      
+      int getHealth();
+
+      int getbaseDamgae();
+
+      int getaditionaldamage();
+
+      int getheallinghealth();
+
+      // Receiving health from attacker
+      void TakeDamage(int aditnl_dm , PlayerType plt);
+
+      // Heal the current player
+      virtual void HealThePlayer();
+    
+      // Ulitmate Ability of Players
+       virtual void UltimateAbility(int ad_damage , PlayerType p,BasePlayer*player);
+  
+
+      // Check The Player is Alive or Not
+      bool CheckAlive();
+
+      // Get Player Type Enum
+      PlayerType getPlayerType();
+
+      // Get String Of Enum Player Type 
+      string getPlayerTypeString( PlayerType plt);
+
+  
+
+
+};
+
+
+
+   
+
+
